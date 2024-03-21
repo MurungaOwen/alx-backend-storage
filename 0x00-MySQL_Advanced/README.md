@@ -48,3 +48,26 @@ Quantity in the table items can be negative.
 ## task 5
 Email validation to sent
 a SQL script that creates a trigger that resets the attribute valid_email only when the email has been changed.
+
+## task 6
+a SQL script that creates a stored procedure AddBonus that adds a new correction for a student.
+
+Requirements:
+Procedure AddBonus is taking 3 inputs (in this order):
+user_id, a users.id value (you can assume user_id is linked to an existing users)
+project_name, a new or already exists projects - if no projects.name found in the table, you should create it
+score, the score value for the correction
+
+## task 7
+a SQL script that creates a stored procedure ComputeAverageScoreForUser that computes and store the average score for a student. Note: An average score can be a decimal
+
+Requirements:
+
+Procedure ComputeAverageScoreForUser is taking 1 input:
+user_id, a users.id value (you can assume user_id is linked to an existing users)
+
+## task 8
+a SQL script that creates an index idx_name_first on the table names and the first letter of name.
+Import this table dump: names.sql.zip
+Only the first letter of name must be indexed
+## task 9
