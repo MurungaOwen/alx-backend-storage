@@ -70,4 +70,14 @@ user_id, a users.id value (you can assume user_id is linked to an existing users
 a SQL script that creates an index idx_name_first on the table names and the first letter of name.
 Import this table dump: names.sql.zip
 Only the first letter of name must be indexed
+
 ## task 9
+a SQL script that creates an index idx_name_first_score on the table names and the first letter of name and the score.
+
+Requirements:
+
+Import this table dump: names.sql.zip
+Only the first letter of name AND score must be indexed
+
+## task 10
+SQL script that creates a function SafeDiv that divides (and returns) the first by the second number or returns 0 if the second number is equal to 0.
