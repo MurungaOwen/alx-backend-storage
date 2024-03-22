@@ -29,7 +29,7 @@ Requirements:
 Import this table dump: metal_bands.sql.zip
 Column names must be: origin and nb_fans
 Your script can be executed on any database
-Context: Calculate/compute something is always power intensive… better to distribute the load!
+Context: Calculate/compute something is always power intensive… better to distribute the load
 
 ## task 3
  a SQL script that lists all bands with Glam rock as their main style, ranked by their longevity
@@ -81,3 +81,27 @@ Only the first letter of name AND score must be indexed
 
 ## task 10
 SQL script that creates a function SafeDiv that divides (and returns) the first by the second number or returns 0 if the second number is equal to 0.
+
+## task 11
+a SQL script that creates a view need_meeting that lists all students that have a score under 80 (strict) and no last_meeting or more than 1 month.
+
+Requirements:
+
+The view need_meeting should return all students name when:
+They score are under (strict) to 80
+AND no last_meeting date OR more than a month
+
+## task 12
+SQL script that creates a stored procedure ComputeAverageWeightedScoreForUser that computes and store the average weighted score for a student.
+
+Requirements:
+
+Procedure ComputeAverageScoreForUser is taking 1 input:
+user_id, a users.id value (you can assume user_id is linked to an existing users)
+
+## task 13
+Write a SQL script that creates a stored procedure ComputeAverageWeightedScoreForUsers that computes and store the average weighted score for all students.
+
+Requirements:
+
+Procedure ComputeAverageWeightedScoreForUsers is not taking any input.
