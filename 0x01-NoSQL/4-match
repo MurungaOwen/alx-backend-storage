@@ -1,0 +1,2 @@
+// query only having Holberton
+db.school.find({name: "Holberton school"})
