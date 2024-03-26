@@ -67,3 +67,7 @@ one line with the number of documents with:
 method=GET
 path=/status
 You can use this dump as data sample: dump.zip
+
+## task 100
+a script that lists all documents with name starting by Holberton in the collection school:
+The database name will be passed as option of mongo command

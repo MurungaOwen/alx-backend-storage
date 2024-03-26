@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 """nginx logs"""
 from pymongo import MongoClient
-list_all = __import__('8-all').list_all
 
 
 client = MongoClient('mongodb://127.0.0.1:27017')
 db = client["logs"]
 collection = db.get_collection("nginx")
-
 
 def get_total() -> int:
     """return total contents"""
