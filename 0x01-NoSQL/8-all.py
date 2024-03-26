@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""contains function to list docs"""
 from typing import List
 
 

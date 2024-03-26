@@ -1,2 +1,3 @@
 // a script to show all records
-db.school.find()
+db.school.find();
+
