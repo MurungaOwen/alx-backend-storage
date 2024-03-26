@@ -10,7 +10,8 @@ def update_topics(mongo_collection, name, topics):
         return:
             None
     """
-    data = mongo_collection.update_one(
-        {"name": name}, {"$set": {"topics": topics}}
+    data = mongo_collection.update_many(
+        {"name": name},
+        {"$set": {"topics": topics}}
         )   # take query and data
     return data.upserted_id
