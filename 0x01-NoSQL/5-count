@@ -1,3 +1,2 @@
 // count all records
 db.school.countDocuments();
-

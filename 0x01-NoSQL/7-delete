@@ -1,3 +1,2 @@
 // deletion
 db.school.deleteMany({name: "Holberton school"});
-
