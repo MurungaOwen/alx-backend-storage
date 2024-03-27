@@ -11,7 +11,7 @@ class Cache:
         """constructor for class"""
         self._redis = redis.Redis()
         self._redis.flushdb()
-    
+
     @staticmethod
     def count_calls(method: Callable) -> Callable:
         @functools.wraps(method)
@@ -41,6 +41,8 @@ class Cache:
 
     def get_int(self, key: str) -> Union[int, None]:
         return self.get(key, int)
+
+
 cache = Cache()
 
 TEST_CASES = {
