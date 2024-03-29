@@ -25,10 +25,10 @@ def cache_result(method):
         cached_content = redis_client.get(url)
         if cached_content:
             return cached_content.decode('utf-8')
-        else:
-            page_content = method(url)
-            redis_client.setex(url, 10, page_content)
-            return page_content
+        
+        page_content = method(url)
+        redis_client.setex(url, 10, page_content)
+        return page_content
     return wrapper
 
 
