@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from typing import Callable
 from functools import wraps
 import redis
