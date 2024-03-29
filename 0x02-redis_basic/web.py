@@ -1,31 +1,41 @@
-#!/usr/bin/env python3
-from typing import Callable
-from functools import wraps
-import redis
 import requests
-redis = redis.Redis()
+import redis
+import time
+
+redis_client = redis.Redis()
 
 
-def wrap_requests(fn: Callable) -> Callable:
-    """ Decorator wrapper """
-
-    @wraps(fn)
+def count_access(method):
     def wrapper(url):
-        """ Wrapper for decorator guy """
-        redis.incr(f"count:{url}")
-        cached_response = redis.get(f"cached:{url}")
-        if cached_response:
-            return cached_response.decode('utf-8')
-        result = fn(url)
-        redis.setex(f"cached:{url}", 10, result)
-        return result
-
+        url_count_key = f"count:{url}"
+        count = redis_client.incr(url_count_key)
+        if count == 1:
+            redis_client.expire(url_count_key, 10)
+        return method(url)
     return wrapper
 
 
-@wrap_requests
+def cache_result(method):
+    def wrapper(url):
+        cached_content = redis_client.get(url)
+        if cached_content:
+            return cached_content.decode('utf-8')
+        else:
+            page_content = method(url)
+            redis_client.setex(url, 10, page_content)
+            return page_content
+    return wrapper
+
+
+@count_access
+@cache_result
 def get_page(url: str) -> str:
-    """get page self descriptive
-    """
     response = requests.get(url)
     return response.text
+
+
+if __name__ == "__main__":
+    url = "http://slowwly.robertomurray.co.uk"
+    print(get_page(url))
+    time.sleep(5)
+    print(get_page(url))
