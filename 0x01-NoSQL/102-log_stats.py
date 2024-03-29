@@ -8,7 +8,6 @@ if __name__ == '__main__':
     PIPE = [{"$group": {"_id": "$ip", "count": {"$sum": 1}}},
             {"$sort": {"count": -1}}, {"$limit": 10}]
 
-
     def log_stats(mongo_collection, option=None):
         """
         Prototype: def log_stats(mongo_collection, option=None):
@@ -32,7 +31,6 @@ if __name__ == '__main__':
 
         for ip in mongo_collection.aggregate(PIPE):
             print(f"\t{ip.get('_id')}: {ip.get('count')}")
-
 
     if __name__ == "__main__":
         nginx_collection = MongoClient('mongodb://127.0.0.1:27017').logs.nginx
