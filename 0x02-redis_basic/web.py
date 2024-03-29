@@ -25,17 +25,17 @@ def cache_result(method):
         cached_content = redis_client.get(url)
         if cached_content:
             return cached_content.decode('utf-8')
-        
-        page_content = method(url)
-        redis_client.setex(url, 10, page_content)
-        return page_content
+        else:
+            page_content = method(url)
+            redis_client.setex(url, 10, page_content)
+            return page_content
     return wrapper
 
 
 @count_access
 @cache_result
 def get_page(url: str) -> str:
-    """fetch data from url"""
+    """fetch data"""
     response = requests.get(url)
     return response.text
 
