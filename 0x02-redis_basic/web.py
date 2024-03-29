@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import requests
 import redis
 import time
@@ -6,7 +7,9 @@ redis_client = redis.Redis()
 
 
 def count_access(method):
+    """count number of accesses"""
     def wrapper(url):
+        """called before fn"""
         url_count_key = f"count:{url}"
         count = redis_client.incr(url_count_key)
         if count == 1:
@@ -16,7 +19,9 @@ def count_access(method):
 
 
 def cache_result(method):
+    """cache the url content"""
     def wrapper(url):
+        """called befor fn"""
         cached_content = redis_client.get(url)
         if cached_content:
             return cached_content.decode('utf-8')
@@ -30,6 +35,7 @@ def cache_result(method):
 @count_access
 @cache_result
 def get_page(url: str) -> str:
+    """fetch data from url"""
     response = requests.get(url)
     return response.text
 
